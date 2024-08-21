@@ -11,6 +11,9 @@ import numpy as np
 from omegaconf import DictConfig
 from tqdm import tqdm
 
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(sys.path)
 from vlmaps.utils.habitat_utils import get_obj2cls_dict, make_cfg, save_obs
 
 
@@ -74,8 +77,8 @@ def main(config: DictConfig) -> None:
             zip_filepath.as_posix(),
             fuzzy=True,
         )
-    # subprocess.run(["unzip", zip_filepath.as_posix(), "-d", dataset_dir.parent.as_posix()])
-    subprocess.run(["tar", "zxvf", zip_filepath.as_posix(), "--strip-components=1", "-C", dataset_dir.as_posix()])
+    subprocess.run(["unzip", zip_filepath.as_posix(), "-d", dataset_dir.parent.as_posix()])
+    # subprocess.run(["tar", "zxvf", zip_filepath.as_posix(), "--strip-components=1", "-C", dataset_dir.as_posix()])
     subprocess.run(["rm", zip_filepath.as_posix()])
 
     data_dirs = sorted([x for x in dataset_dir.iterdir() if x.is_dir()])

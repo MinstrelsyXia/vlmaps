@@ -224,5 +224,5 @@ def get_dynamic_obstacles_map_3d(
 
     if vis:
         cv2.imshow("new obstacles_cropped", (new_obstacles * 255).astype(np.uint8))
-        cv2.waitKey()
+        # cv2.waitKey(1)
     return new_obstacles

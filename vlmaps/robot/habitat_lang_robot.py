@@ -302,7 +302,7 @@ class HabitatLanguageRobot(LangRobot):
         # print("predict_mask: ", predict_mask.shape)
         # mask_vis = cv2.cvtColor((predict_mask * 255).astype(np.uint8), cv2.COLOR_GRAY2BGR)
         # cv2.imshow("mask_vis", mask_vis)
-        # cv2.waitKey()
+        # cv2.waitKey(1)
         dists = distance_transform_edt(predict_mask == 0)
         tmp = np.ones_like(dists) - (dists * decay_rate)
         dist_map = np.where(tmp < 0, np.zeros_like(tmp), tmp)
@@ -636,7 +636,7 @@ def main(config: DictConfig) -> None:
     rgb = obs["color_sensor"]
     bgr = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
     cv2.imshow("scr rgb", bgr)
-    cv2.waitKey()
+    cv2.waitKey(1)
 
     tar_hab_tf = cvt_pose_vec2tf(robot.vlmaps_dataloader.base_poses[800])
     robot.set_agent_state(tar_hab_tf)
@@ -644,7 +644,7 @@ def main(config: DictConfig) -> None:
     rgb = obs["color_sensor"]
     bgr = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
     cv2.imshow("tar rgb", bgr)
-    cv2.waitKey()
+    cv2.waitKey(1)
 
     robot.set_agent_state(hab_tf)
     robot.vlmaps_dataloader.from_habitat_tf(tar_hab_tf)

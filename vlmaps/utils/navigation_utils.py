@@ -67,7 +67,7 @@ def point_in_contours(obs_map, contours_list, point):
         # con_mask_copy = con_mask.copy()
         # cv2.circle(con_mask_copy, (col, row), 10, 0, 3)
         # cv2.imshow("contour_mask", con_mask_copy)
-        # cv2.waitKey()
+        # cv2.waitKey(1)
         if con_mask[row, col] == 255:
             ids.append(con_i)
 
@@ -79,7 +79,7 @@ def build_visgraph_with_obs_map(obs_map, use_internal_contour=False, internal_po
     obs_map_vis = np.tile(obs_map_vis, [1, 1, 3])
     if vis:
         cv2.imshow("obs", obs_map_vis)
-        cv2.waitKey()
+        cv2.waitKey(1)
 
     contours_list, centers_list, bbox_list, hierarchy = get_segment_islands_pos(
         obs_map, 0, detect_internal_contours=use_internal_contour
@@ -113,7 +113,7 @@ def build_visgraph_with_obs_map(obs_map, use_internal_contour=False, internal_po
         if vis:
             # plt.plot(xlist, zlist)
 
-            cv2.waitKey()
+            cv2.waitKey(1)
     g = vg.VisGraph()
     g.build(poly_list, workers=4)
     return g
@@ -141,7 +141,7 @@ def plan_to_pos_v2(start, goal, obstacles, G: vg.VisGraph = None, vis=False):
         obs_map_vis = cv2.circle(obs_map_vis, (int(start[1]), int(start[0])), 3, (255, 0, 0), -1)
         obs_map_vis = cv2.circle(obs_map_vis, (int(goal[1]), int(goal[0])), 3, (0, 0, 255), -1)
         cv2.imshow("planned path", obs_map_vis)
-        cv2.waitKey()
+        cv2.waitKey(1)
 
     path = []
     startvg = vg.Point(start[0], start[1])
@@ -192,7 +192,7 @@ def plan_to_pos_v2(start, goal, obstacles, G: vg.VisGraph = None, vis=False):
 
         seg = Image.fromarray(obs_map_vis)
         cv2.imshow("planned path", obs_map_vis)
-        cv2.waitKey()
+        cv2.waitKey(1)
 
     return path
 

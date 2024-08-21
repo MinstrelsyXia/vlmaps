@@ -2,6 +2,10 @@ from pathlib import Path
 import cv2
 import hydra
 from omegaconf import DictConfig
+
+import sys,os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(sys.path)
 from vlmaps.robot.habitat_lang_robot import HabitatLanguageRobot
 from vlmaps.map.interactive_map import InteractiveMap
 from vlmaps.utils.matterport3d_categories import mp3dcat
@@ -26,7 +30,7 @@ def main(config: DictConfig) -> None:
     # rgb = obs["color_sensor"]
     # bgr = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
     # cv2.imshow("scr rgb", bgr)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
 
     # tar_hab_tf = cvt_pose_vec2tf(robot.vlmaps_dataloader.base_poses[800])
     # robot.set_agent_state(tar_hab_tf)
@@ -34,7 +38,7 @@ def main(config: DictConfig) -> None:
     # rgb = obs["color_sensor"]
     # bgr = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
     # cv2.imshow("tar rgb", bgr)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
 
     # robot.set_agent_state(hab_tf)
     # robot.recorded_robot_pos = []
@@ -57,7 +61,7 @@ def main(config: DictConfig) -> None:
     # robot.recorded_actions_list = []
     # rgb = robot.sim.get_sensor_observations(0)["color_sensor"]
     # cv2.imshow("curr obs", rgb)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
     # robot.move_to_left("chair")
 
     # robot.set_agent_state(tf_hab)
@@ -65,13 +69,13 @@ def main(config: DictConfig) -> None:
     # robot.recorded_actions_list = []
     # rgb = robot.sim.get_sensor_observations(0)["color_sensor"]
     # cv2.imshow("curr obs", rgb)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
     # robot.move_to_right("chair")
 
     # robot.set_agent_state(tf_hab)
     # rgb = robot.sim.get_sensor_observations(0)["color_sensor"]
     # cv2.imshow("curr obs", rgb)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
     # robot.move_south("chair")
 
     # robot.set_agent_state(tf_hab)
@@ -79,7 +83,7 @@ def main(config: DictConfig) -> None:
     # robot.recorded_actions_list = []
     # rgb = robot.sim.get_sensor_observations(0)["color_sensor"]
     # cv2.imshow("curr obs", rgb)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
     # robot.move_north("chair")
 
     # robot.set_agent_state(tf_hab)
@@ -87,7 +91,7 @@ def main(config: DictConfig) -> None:
     # robot.recorded_actions_list = []
     # rgb = robot.sim.get_sensor_observations(0)["color_sensor"]
     # cv2.imshow("curr obs", rgb)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
     # robot.move_west("chair")
 
     # robot.set_agent_state(tf_hab)
@@ -95,7 +99,7 @@ def main(config: DictConfig) -> None:
     # robot.recorded_actions_list = []
     # rgb = robot.sim.get_sensor_observations(0)["color_sensor"]
     # cv2.imshow("curr obs", rgb)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
     # robot.move_east("chair")
 
     robot.set_agent_state(tf_hab)
@@ -103,7 +107,7 @@ def main(config: DictConfig) -> None:
     robot.recorded_actions_list = []
     rgb = robot.sim.get_sensor_observations(0)["color_sensor"]
     cv2.imshow("curr obs", rgb)
-    cv2.waitKey()
+    cv2.waitKey(1)
     robot.turn(90)
     robot.turn(-90)
     robot.move_to_object("counter")
@@ -111,7 +115,7 @@ def main(config: DictConfig) -> None:
     # robot.set_agent_state(tf_hab)
     # rgb = robot.sim.get_sensor_observations(0)["color_sensor"]
     # cv2.imshow("curr obs", rgb)
-    # cv2.waitKey()
+    # cv2.waitKey(1)
     # robot.move_in_between("chair", "sofa")
 
 

@@ -48,7 +48,7 @@ class GTMap(Map):
         forground = binary_closing(self.cropped_segment, iterations=3)
         forground = np.logical_and(forground, self.obstacles_cropped == 0)
         # cv2.imshow(name, (forground * 255).astype(np.uint8))
-        # cv2.waitKey()
+        # cv2.waitKey(1)
         self.cropped_segment = np.ones_like(self.cropped_segment, dtype=np.int32)
         self.cropped_segment[forground] = 0
         self.cropped_obstacles = self.obstacles[self.xmin : self.xmax + 1, self.ymin : self.ymax + 1]

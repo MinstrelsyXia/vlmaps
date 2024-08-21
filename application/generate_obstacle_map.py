@@ -25,7 +25,7 @@ def main(config: DictConfig) -> None:
     obs_map = robot.map.obstacles_cropped
     obs_map = obs_map.astype(np.uint8) * 255
     cv2.imshow("obs_map", obs_map)
-    cv2.waitKey()
+    cv2.waitKey(1)
 
     # customize obstacles map
     robot.map.customize_obstacle_map(

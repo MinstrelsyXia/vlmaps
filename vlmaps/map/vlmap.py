@@ -260,7 +260,7 @@ class VLMap(Map):
         mask_2d = mask_2d[self.rmin : self.rmax + 1, self.cmin : self.cmax + 1]
         # print(f"showing mask for object cat {name}")
         # cv2.imshow(f"mask_{name}", (mask_2d.astype(np.float32) * 255).astype(np.uint8))
-        # cv2.waitKey()
+        # cv2.waitKey(1)
 
         foreground = binary_closing(mask_2d, iterations=3)
         foreground = gaussian_filter(foreground.astype(float), sigma=0.8, truncate=3)
@@ -268,7 +268,7 @@ class VLMap(Map):
         # cv2.imshow(f"mask_{name}_gaussian", (foreground * 255).astype(np.uint8))
         foreground = binary_dilation(foreground)
         # cv2.imshow(f"mask_{name}_processed", (foreground.astype(np.float32) * 255).astype(np.uint8))
-        # cv2.waitKey()
+        # cv2.waitKey(1)
 
         contours, centers, bbox_list, _ = get_segment_islands_pos(foreground, 1)
         # print("centers", centers)

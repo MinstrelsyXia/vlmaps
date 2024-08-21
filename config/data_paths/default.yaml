@@ -1,2 +1,2 @@
 habitat_scene_dir: "/home/wangliuyi/code/xxy/Matterport3D/data/mp3d"
-vlmaps_data_dir: "/home/wangliuyi/code/xxy/Matterport3D/data"
+vlmaps_data_dir: "/home/wangliuyi/code/xxy/Matterport3D/data/vlmaps_dataset"

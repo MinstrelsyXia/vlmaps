@@ -117,7 +117,7 @@ def main(config: DictConfig) -> None:
     # cv2.imshow("curr obs", rgb)
     # cv2.waitKey(1)
     # robot.move_in_between("chair", "sofa")
-
+    
 
 if __name__ == "__main__":
     main()

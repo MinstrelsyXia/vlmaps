@@ -52,6 +52,26 @@ class VLMapBuilder:
         self.base_transform = base_transform
         self.rot_type = map_config.pose_info.rot_type
 
+
+    def issac2vlmap(self,camera_pose):
+        '''
+        Isaacsim: x right, y up, z back; w x y z
+        vlmap: x right y down z forward; x y z w
+        For original input from Isaacsim, we need to convert it to vlmap format
+        Input : [N,7]
+        Output: [N,7]
+        '''
+        # Use direct indexing instead of np.stack for better performance
+        position = camera_pose[:, :3]
+        orientation = camera_pose[:, 3:]
+        
+        # Apply the transformations directly
+        vlmap_pos = position * np.array([1, -1, -1])
+        vlmap_ori = orientation[:, [1, 2, 3, 0]]
+
+        # Concatenate the position and orientation to form the output
+        return np.hstack((vlmap_pos, vlmap_ori))
+
     def create_mobile_base_map(self):
         """
         build the 3D map centering at the first base frame
@@ -62,7 +82,8 @@ class VLMapBuilder:
         gs = self.map_config.grid_size
         depth_sample_rate = self.map_config.depth_sample_rate
 
-        self.base_poses = np.loadtxt(self.pose_path)
+        base_poses = np.loadtxt(self.pose_path)
+        self.base_poses = self.issac2vlmap(base_poses)
         if self.rot_type == "quat":
             self.init_base_tf = cvt_pose_vec2tf(self.base_poses[0])
         elif self.rot_type == "mat":
